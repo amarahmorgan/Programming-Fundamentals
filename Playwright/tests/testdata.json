@@ -1,0 +1,49 @@
+{
+    "tests": [
+        {
+            "scenario": "Successful airtime sale - MTN R29",
+            "input": {
+                "phoneNumber": "0821234567",
+                "product": "airtime",
+                "provider": "MTN",
+                "amount": "R29",
+                "acceptTerms": true
+            },
+            "expected": {
+                "status": "SUCCESS",
+                "receiptVisible": true,
+                "referenceGenerated": true
+            }
+        },
+        {
+            "scenario": "Failed sale - Terms not accepted",
+            "input": {
+                "phoneNumber": "0821234567",
+                "product": "airtime",
+                "provider": "MTN",
+                "amount": "R29",
+                "acceptTerms": false
+            },
+            "expected": {
+                "status": "FAILED",
+                "error": "Terms and conditions must be accepted",
+                "receiptVisible": false
+            }
+        },
+        {
+            "scenario": "Failed sale - Invalid phone number",
+            "input": {
+                "phoneNumber": "123",
+                "product": "airtime",
+                "provider": "MTN",
+                "amount": "R29",
+                "acceptTerms": true
+            },
+            "expected": {
+                "status": "FAILED",
+                "error": "Invalid phone number",
+                "receiptVisible": false
+            }
+        }
+    ]
+}
